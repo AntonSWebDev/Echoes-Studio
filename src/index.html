@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/head.html', {"title":"Echoes Studio"})
+
+<body>
+ <div class="page">
+  @@include('html/header.html', {})
+  <main class="main">
+   <section class="hero">
+    <div class="hero__bg ibg">
+     <img src="img/hero/dec.png" alt="Image">
+    </div>
+    <div class="container">
+     <div class="hero__wrapper">
+      <div class="hero__col hero-col">
+       <h1 class="hero-col__title">
+        Créez un podcast
+        pour développer
+        votre <span>acquisition</span>
+       </h1>
+       <p class="hero-col__text">
+        Echoes vous forme et vous accompagne pour faire grandir
+        une communauté engagée.
+       </p>
+       <a class="hero-col__btn btn btn--purp" href="#">
+        Commencer
+       </a>
+      </div>
+      <div class="hero__col hero-col">
+       <div class="hero-col__hero-top">
+        <div class="hero-col__hero-img ibg">
+         <img src="img/hero/01.jpg" alt="Image">
+        </div>
+        <a class="hero-col__hero-btn btn btn-w" href="https://www.youtube.com/watch?v=xEpuaR837Ho&list=PLM6XATa8CAG6uDjuDuAOTsdxmhDQMDO-J&index=3" data-fancybox>
+         Écouter le Pitch
+         <img src="img/icons/play-circle.svg" alt="Icon">
+        </a>
+       </div>
+       <div class="hero-col__hero-bottom">
+        <p class="hero-col__hero-text">
+         Xavier et Jérémy vous présentent Echoes, et vous donnent les clés du succès.
+        </p>
+        <div class="hero-col__hero-time">
+         1min24
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  @@include('html/footer.html', {})
+ </div>
+ <div class="overlay"></div>
+ <script type="module" src="js/app.min.js"></script>
+</body>
+
+</html>

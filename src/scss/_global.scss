@@ -1,0 +1,241 @@
+// Переменные /////////////////////////////////////////////////////////////////////////////////////
+
+$maxWidth: 1440;
+$maxWidthContainer: 1090;
+
+$primary: #7748EF;
+$formation: #AC43FF;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Миксины ////////////////////////////////////////////////////////////////////////////////////////
+
+@mixin adaptive-value ($property, $startSize, $minSize, $type) {
+ $addSize: $startSize - $minSize;
+
+ @if $type==1 {
+  // Толко если меньше контейнера
+  #{$property}: $startSize + px;
+
+  @media (max-width: #{$maxWidthContainer + px}) {
+   #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+  }
+ }
+
+ @else if $type==2 {
+  // Только если больше контейнера
+  #{$property}: $startSize + px;
+
+  @media (min-width: #{$maxWidthContainer + px}) {
+   #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+ }
+
+ @else {
+  // Всегда 
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+ }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Шаблоны ////////////////////////////////////////////////////////////////////////////////////////
+%Inter-700 {
+ font-family: 'Inter', sans-serif;
+ font-weight: 700;
+}
+
+%SfProDisplay-700 {
+ font-family: SFPRODISPLAY, sans-serif;
+ font-weight: 700;
+}
+
+%SfProDisplay-600 {
+ font-family: SFPRODISPLAY, sans-serif;
+ font-weight: 600;
+}
+
+%SFProText-400 {
+ font-family: SFProText, sans-serif;
+ font-weight: 400;
+}
+
+%SFProText-500 {
+ font-family: SFProText, sans-serif;
+ font-weight: 500;
+}
+
+%SFProText-600 {
+ font-family: SFProText, sans-serif;
+ font-weight: 600;
+}
+
+%SFProText-700 {
+ font-family: SFProText, sans-serif;
+ font-weight: 700;
+}
+
+%Tragic-400 {
+ font-family: Tragic, sans-serif;
+ font-weight: 400;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Глобальные настройки ///////////////////////////////////////////////////////////////////////////
+
+html {
+ box-sizing: border-box;
+ height: 100%;
+}
+
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
+}
+
+body {
+ height: 100%;
+ @extend %SFProText-600;
+ color: #fff;
+ line-height: 32px;
+}
+
+a {
+ text-decoration: none;
+ color: inherit;
+ display: inline-block;
+}
+
+input {
+ background: transparent;
+ border: none;
+}
+
+
+img {
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+button {
+ cursor: pointer;
+ border: none;
+ background: transparent;
+ display: block;
+ padding: 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Блоки //////////////////////////////////////////////////////////////////////////////////////////
+
+.container {
+ max-width: $maxWidthContainer + px;
+ padding: 0 15px;
+ margin: 0 auto;
+ height: 100%;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ margin: -1px;
+ bottom: 0;
+ padding: 0;
+ white-space: nowrap;
+ clip-path: inset(100%);
+ clip: rect(0, 0, 0, 0);
+ overflow: hidden;
+}
+
+.page {
+ overflow: hidden;
+ display: flex;
+ flex-direction: column;
+ min-height: 100%;
+}
+
+.footer {
+ margin-top: auto;
+}
+
+.hidden {
+ display: none;
+}
+
+.lock {
+ overflow: hidden;
+}
+
+.overlay {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba(0, 0, 0, 0.7);
+ opacity: 0;
+ visibility: hidden;
+ transition: all .3s ease;
+ z-index: 50;
+ cursor: pointer;
+
+ &.active {
+  opacity: 1;
+  visibility: visible;
+ }
+}
+
+.ibg {
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ position: relative;
+ z-index: -1;
+
+ img {
+  display: none;
+ }
+}
+
+.btn {
+ border-radius: 32px;
+ @extend %Inter-700;
+ font-size: 18px;
+ line-height: 1.45;
+ text-align: center;
+ padding: 19px 30px;
+ transition: all .3s ease;
+}
+
+.btn--purp {
+ background: #7748EF;
+ color: #FFFFFF;
+
+ @media (min-width: 768px) {
+  &:hover {
+   background: $formation;
+  }
+ }
+}
+
+.btn-w {
+ color: #000000;
+ background: rgba(255, 255, 255, 0.72);
+ border-radius: 32px;
+
+ @media (min-width: 768px) {
+  &:hover {
+   background: rgba(255, 255, 255, 1);
+  }
+ }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
