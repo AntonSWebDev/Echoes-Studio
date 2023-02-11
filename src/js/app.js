@@ -1,12 +1,12 @@
 import $ from 'jquery';
-// import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper from 'swiper';
+// import jBox from 'jbox';
 import { Fancybox } from "@fancyapps/ui";
 import * as isWebp from './modules/isWebp.js';
 import * as ibg from './modules/ibg.js';
 // import * as anchors from './modules/anchors.js';
 // import * as useDynamicAdapt from './modules/dynamicAdapt.js';
 // import * as spoilers from './modules/spoilers.js';
-// import jBox from 'jbox';
 
 isWebp.isWebp(); // Проверка поддержки webp и добавление класса _webp или _no-webp для HTML
 ibg.ibg(); // Фоновое изображение
@@ -19,49 +19,48 @@ ibg.ibg(); // Фоновое изображение
 const body = document.querySelector('body');
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu-nav');
-const overlay = document.querySelector('.overlay');
+const overlay = document.querySelectorAll('.overlay');
 const links = document.querySelectorAll('.link-nav');
 
 menuBtn.addEventListener('click', function () {
  body.classList.toggle('lock');
  menu.classList.toggle('active');
  menuBtn.classList.toggle('active');
- overlay.classList.toggle('active');
+ overlay.forEach(function (i) {
+  i.classList.toggle('active');
+ });
 });
 
-overlay.addEventListener('click', function () {
- body.classList.remove('lock');
- menu.classList.remove('active');
- menuBtn.classList.remove('active');
- overlay.classList.remove('active');
-});
-
-links.forEach(function (i) {
- i.addEventListener('click', function () {
+overlay.forEach(function (i) {
+ i.addEventListener('click', function() {
+  overlay.forEach(function (i) {
+   i.classList.remove('active');
+  });
   body.classList.remove('lock');
   menu.classList.remove('active');
   menuBtn.classList.remove('active');
-  overlay.classList.remove('active');
+ });
+});
+
+links.forEach(function (i) {
+ i.addEventListener('click', function (e) {
+  body.classList.remove('lock');
+  menu.classList.remove('active');
+  menuBtn.classList.remove('active');
+  overlay.forEach(function (i) {
+   i.classList.remove('active');
+  });
  });
 });
 
 
-// const swiper = new Swiper('.price__slider', {
-//   allowTouchMove: true,
-//   slidesPerView: "auto",
-//   spaceBetween: 18,
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//     dynamicBullets: true,
-//   },
-//   breakpoints: {
-//     1120: {
-//       allowTouchMove: false,
-//       spaceBetween: 0
-//     }
-//   }
-// });
+const swiper = new Swiper('.slider-createurs', {
+  allowTouchMove: true,
+  slidesPerView: 'auto',
+  spaceBetween: 30,
+  centeredSlides: true,
+  initialSlide: 4,
+});
 
 // WORKS FILTER
 

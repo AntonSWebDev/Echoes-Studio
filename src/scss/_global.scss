@@ -5,6 +5,7 @@ $maxWidthContainer: 1090;
 
 $primary: #7748EF;
 $formation: #AC43FF;
+$agence: #00BFF8;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,6 +101,7 @@ body {
  @extend %SFProText-600;
  color: #fff;
  line-height: 32px;
+ background: #000;
 }
 
 a {
@@ -178,8 +180,8 @@ input[type="radio"].visually-hidden {
  position: fixed;
  top: 0;
  left: 0;
- right: 0;
- bottom: 0;
+ width: 100%;
+ height: 100%;
  background: rgba(0, 0, 0, 0.7);
  opacity: 0;
  visibility: hidden;
@@ -226,7 +228,7 @@ input[type="radio"].visually-hidden {
  }
 }
 
-.btn-w {
+.btn--w {
  color: #000000;
  background: rgba(255, 255, 255, 0.72);
  border-radius: 32px;
@@ -236,6 +238,15 @@ input[type="radio"].visually-hidden {
    background: rgba(255, 255, 255, 1);
   }
  }
+}
+
+
+.title {
+ @extend %SfProDisplay-700;
+ line-height: 1.1;
+ text-align: center;
+ color: #FFFFFF;
+ @include adaptive-value("font-size", 54, 32, 1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
